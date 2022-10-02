@@ -17,4 +17,21 @@ export const styles = StyleSheet.create({
       paddingHorizontal: 24,
     },
 
+    flatlist:{
+      
+    },
+
+    viewthree:{
+      width:'100%',
+      flexDirection:"row",
+      alignItems:"center",
+      
+    },
+
+    text:{
+      color: 'white',
+      fontSize: 14,
+      marginTop: 20,
+    },
+
   });

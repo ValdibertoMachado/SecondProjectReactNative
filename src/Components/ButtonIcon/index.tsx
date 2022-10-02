@@ -4,7 +4,7 @@ import { styles } from './styles';
 import {MaterialIcons} from '@expo/vector-icons';
 
 type Props = {
-  icon: string,
+  icon: keyof typeof MaterialIcons.glyphMap,
   typecolor: string,
 }
 
