@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: 'black',
       padding: 24,
+      
     },
 
     viewtwo:{
@@ -15,6 +16,7 @@ export const styles = StyleSheet.create({
       flexDirection: 'row',
       justifyContent:  'center',
       paddingHorizontal: 24,
+      
     },
 
     flatlist:{
@@ -33,5 +35,13 @@ export const styles = StyleSheet.create({
       fontSize: 14,
       marginTop: 20,
     },
+
+    playercard:{
+      marginLeft: 10
+    },
+
+    viewfour:{
+      
+    }
 
   });

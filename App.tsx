@@ -6,6 +6,7 @@ import { Loading } from './src/Components/Loading';
 import { StatusBar } from 'react-native';
 import { NewGroup } from './src/screems/NewGroup';
 import { Players } from './src/screems/Players';
+import { Routes } from './src/routes';
 
 
 export default function App() {
@@ -19,7 +20,7 @@ export default function App() {
       backgroundColor='transparent'
       translucent
       />
-   { fontsLoaded ? <Players/> : <Loading/> }
+   { fontsLoaded ? <Routes/> : <Loading/> }
    </ThemeProvider>
   );
 }

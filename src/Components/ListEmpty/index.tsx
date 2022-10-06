@@ -10,7 +10,7 @@ type Props = {
 export function ListEmpty({text}: Props) {
   return (
     <View style={styles.view}>
-      <Text>
+      <Text style={styles.text}>
         {text}
       </Text>
     </View>

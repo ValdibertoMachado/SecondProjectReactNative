@@ -16,9 +16,7 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 6,
-      
-      
-
+      marginRight:20
     },
 
 
