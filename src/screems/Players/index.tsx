@@ -9,22 +9,38 @@ import { useState } from 'react';
 import { PlayerCard } from '../../Components/PlayerCard';
 import { ListEmpty } from '../../Components/ListEmpty';
 import { Button } from '../../Components/Button';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
+type RootParamList = {
+  players: undefined,
+ }
 
-export function Players() {
+ type Props = {
+  navigation: NativeStackNavigationProp<RootParamList, 'players'>
+ }
+
+export function Players({ navigation }: Props) {
 
   const [team, setTeam] = useState('Time A')
-  const [players, setPlayers] = useState([])
+  const [player, setPlayer] = useState<string[]>(['casa', 'ila'])
+  
+  
+  function handleNewGroup(){
+    
+    navigation.navigate('players')
+  }
 
   return (
-    <View style={styles.view}>
+    <SafeAreaView style={styles.view}>
       
       <Header ShowBackButton/>
-      <Highlight text='Nome da turma' subtext='Adicione a galera e separe os times'/>
+      <Highlight text={'Nome da turma'} subtext='Adicione a galera e separe os times'/>
       
       <View style={styles.viewtwo}>
 
-      <Input valueplaceholder = 'Nome da Pessoa'/>
+      <Input onchangetext='' valueplaceholder = 'Nome da Pessoa'/>
       <ButtonIcon icon = 'add' typecolor = 'green'/>  
       
       </View>
@@ -36,22 +52,22 @@ export function Players() {
       data={[ 'Time A', 'Time B' , 'Time C']}
       keyExtractor={ (item) => item }
       renderItem={({ item }) => (
-      <Filter  
+      <Filter
+      onpress={() => setTeam(item)}
       text={item} 
       isActive={item === team} 
-      onPress={() => setTeam(item)}
       />
       )}
       horizontal
       />
-      <Text style={styles.text}>{players.length}</Text>
+      <Text style={styles.text}>{player.length}</Text>
       
       </View>
       
       <View style={styles.viewfour}>
       
       <FlatList
-      data={players}
+      data={player}
       keyExtractor={ (item) => item }
       renderItem={({ item }) => (
         <PlayerCard text={item} icon='account-circle' typecolor='green' onRemove={() => {}}/>
@@ -60,13 +76,16 @@ export function Players() {
       <ListEmpty text='Não existe pessoa neste time'/>
       )}
       contentContainerStyle={[
-        players.length === 0 && {flex: 1, paddingVertical: '50%'}
+        player.length === 0 && {flex: 1, paddingVertical: '50%'}
       ]}
       />
       <Button
+      onpress={handleNewGroup}
+      boolean={false}
       text='Remover turma'/>
       </View>
-    </View>
+
+    </SafeAreaView>
   );
 }
 

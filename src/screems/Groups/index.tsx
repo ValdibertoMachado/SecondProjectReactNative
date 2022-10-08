@@ -6,20 +6,29 @@ import { GroupCard } from '../../Components/GroupCard';
 import { useState } from 'react';
 import { ListEmpty } from '../../Components/ListEmpty';
 import { Button } from '../../Components/Button';
-import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
+type RootParamList = {
+  newgroup: undefined;
+ }
 
-export function Groups() {
+ type Props = {
+  navigation: NativeStackNavigationProp<RootParamList, 'newgroup'>
+ }
+
+export function Groups({ navigation }: Props) {
 
   const [group, setGroup] = useState<string[]>(['Galera da Rocket', 'Amigos']);
-  
-  const navigation = useNavigation()
-  function handleNewGroup(){
-    navigation.navigate('Players')
-  }
 
+  function handleNewGroup(){
+    
+    navigation.navigate('newgroup')
+  }
+  
   return (
-    <View style={styles.view}>
+    <SafeAreaView style={styles.view}>
 
       <Header/>
       <Highlight
@@ -36,12 +45,13 @@ export function Groups() {
       )}
       ListEmptyComponent = {() => <ListEmpty text='Cadastre a primeira turma'/>}
       />
-      <Button 
-      text='criar nova turma' 
-      onPress={handleNewGroup}
+      <Button
+      onpress={handleNewGroup}
+      boolean
+      text='criar nova turma'
       />
 
-    </View>
+    </SafeAreaView>
   );
 }
 
